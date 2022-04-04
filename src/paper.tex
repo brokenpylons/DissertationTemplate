@@ -1,0 +1,237 @@
+\documentclass[a4paper, twoside, 12pt]{book}
+
+\usepackage{unicode-math}
+\usepackage{lualatex-math}
+\setmainfont[
+  BoldFont={STIX2Text-Bold},
+  ItalicFont={STIX2Text-Italic},
+  BoldItalicFont={STIX2Text-BoldItalic}
+]{STIX2Text-Regular}
+\setmathfont{STIX2Math}
+
+\usepackage[a4paper,inner=3.5cm,outer=2.5cm,top=3.0cm,bottom=3.0cm,pdftex]{geometry}
+\usepackage{graphicx}
+
+\renewcommand{\listfigurename}{Figures}
+\renewcommand{\listtablename}{Tables}
+
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\newacronym{gnu}{GNU}{GNU's Not Unix!}
+
+\usepackage[calc]{datetime2}
+\DTMsavenow{today}
+
+\usepackage{hyperref}
+
+\usepackage[style=ieee]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{listings}
+
+\newcommand\AUTHOR{NAME}
+\newcommand\MENTOR{MENTOR}
+\newcommand\TITLE{TITLE}
+\newcommand\NASLOV{NASLOV}
+\newcommand\TYPE{Doctoral dissertation}
+\newcommand\PROGRAM{Computer Science and Informatics}
+\newcommand\LICENSE{LICENSE}
+\newcommand\UDC{UDC}
+
+\newenvironment{FULLPAGE}
+{
+  \parindent=0pt
+  \hyphenpenalty=10000
+  \null
+}
+{
+}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{titlepage}
+\begin{center}
+\includegraphics[scale=0.60]{img/logo-um-feri-ang-grayscale.pdf}
+\vspace*{\fill}
+
+\begin{Large}
+  \AUTHOR\par
+\end{Large}
+\vspace{10mm}
+
+\begin{large}
+  \textbf{\MakeUppercase{\TITLE}}\par
+\end{large}
+\vspace{10mm}
+
+\begin{large}
+  \textbf{\MakeUppercase{\NASLOV}}\par
+\end{large}
+\vspace{10mm}
+
+\begin{Large}
+  \TYPE\par
+\end{Large}
+\vspace*{\fill}
+
+\begin{Large}
+  Maribor, \DTMmonthname{\DTMfetchmonth{today}} \DTMfetchyear{today}
+\end{Large}
+
+\end{center}
+\end{titlepage}
+
+\begin{titlepage}
+\begin{center}
+\includegraphics[scale=0.60]{img/logo-um-feri-ang.pdf}
+\vspace*{\fill}
+
+\begin{Large}
+  \AUTHOR\par
+\end{Large}
+\vspace{10mm}
+
+\begin{large}
+  \textbf{\MakeUppercase{\TITLE}}\par
+\end{large}
+\vspace{10mm}
+
+\begin{large}
+  \textbf{\MakeUppercase{\NASLOV}}\par
+\end{large}
+\vspace{10mm}
+
+\begin{Large}
+  \TYPE\par
+\end{Large}
+\vspace*{\fill}
+
+\begin{Large}
+  Maribor, \DTMmonthname{\DTMfetchmonth{today}} \DTMfetchyear{today}
+\end{Large}
+
+\end{center}
+\end{titlepage}
+
+\newpage
+\null
+
+\newpage
+\fbox{SKLEP}
+
+\newpage
+\null
+
+\frontmatter
+\pagestyle{plain}
+
+\newpage
+
+\begin{FULLPAGE}
+\begin{center}
+\begin{large}
+  \textbf{\MakeUppercase{\TITLE}}\par
+\end{large}
+\vspace{5mm}
+\begin{Large}
+  \TYPE\par
+\end{Large}
+\end{center}
+
+\vspace{3cm}
+\begin{table}[h]
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{ll}
+     Student: & \AUTHOR \\
+     Study program: & Doctoral \\
+     & \PROGRAM \\
+     Mentor: & \MENTOR \\
+     License: & \LICENSE
+    \end{tabular}
+\end{table}
+\end{FULLPAGE}
+
+\newpage
+\null
+
+\newpage
+\begin{FULLPAGE}
+  \begin{Large}
+    \textbf{\TITLE}\par
+  \end{Large}
+  \vspace*{2.0cm}
+
+  \textbf{Keywords:}
+
+  word1, word2, word3 (maximum 5)
+  \vspace*{2.0cm}
+
+  \textbf{UDC:}
+
+  \UDC
+  \vspace*{2.0cm}
+
+  \textbf{Abstract:}
+
+  \textit{The length of the abstract should not exceed 200 words. In the thesis, the page must be numbered with an appropriate Roman number.}
+\end{FULLPAGE}
+
+\newpage
+\null
+
+\newpage
+\begin{FULLPAGE}
+  \begin{Large}
+    \textbf{\NASLOV}\par
+  \end{Large}
+  \vspace*{2.0cm}
+
+  \textbf{Ključne besede:}
+
+  beseda1, beseda2, beseda3 (največ 5)
+  \vspace*{2.0cm}
+
+  \textbf{UDK:}
+
+  \UDC
+  \vspace*{2.0cm}
+
+  \textbf{Povzetek:}
+
+  \textit{Dolžina povzetka naj ne presega 200 besed. Ta stran mora biti v zaključnem delu oštevilčena z ustrezno rimsko številko.}
+\end{FULLPAGE}
+
+\chapter*{Acknowledgements}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\lstlistoflistings
+
+\printglossary[type=\acronymtype]
+\printglossary
+
+\mainmatter
+
+\chapter{Introduction}
+\section{Section}
+Text \cite{knuth_fa} text $\Rightarrow$ \gls{gnu} \gls{gnu}
+
+\chapter{Conclusion}
+
+\appendix
+
+\chapter{Appendix}
+
+\printbibliography[title={References}, notkeyword=own]
+
+\nocite{own}
+\printbibliography[title={Personal bibliography}, keyword=own]
+\end{document}
